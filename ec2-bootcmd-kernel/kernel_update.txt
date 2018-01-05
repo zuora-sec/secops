@@ -1,0 +1,7 @@
+#cloud-config
+bootcmd:
+  - echo `date` - `uname -r` > /kernel_update.log
+  - [ yum, update, -y, kernel ]
+  - echo `yum list kernel` >> /kernel_update.log
+  - echo shutting down >> /kernel_update.log
+  - [ poweroff, -h ]
